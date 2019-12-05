@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+<a href="{{ path('product.index') }}">Retour</a>
+
+<h1 class="h1">Nom: {{ products.name }}</h1>
+<p>Prix: {{ products.price }}</p>
+<p>Description:<br>{{ products.description }}</p>
+<p>Date de création: {{ products.createdAt | date("d/m/Y") }}</p>
+<button type="button" class="btn btn-primary">Ajouter au panier</button>
+
+{% endblock %}

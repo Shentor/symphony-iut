@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<main>
+    {% if products | length > 0 %}
+        <section>
+            <table class="table">
+                <tr>
+                    <th>Titre</th>
+                    <th>Prix</th>
+                    <th>Description</th>
+                    <th>Date de création</th>
+                </tr>
+                {% for product in products %}
+                <tr>
+                    <td><a href="{{ path('product.show', {id : product.id})}}">{{product.name}}</a></td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.description|slice(0, 300)}}<a href="{{ path('product.show', {id : product.id})}}">... voir plus</a></td>
+                    <td>{{product.createdAt|date("d/m/Y")}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </section>
+
+        {% else %}
+            <p>La table est vide</p>
+        {% endif %}
+</main>
+{% endblock %}
